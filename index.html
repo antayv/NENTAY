@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NENTAY – Concierto Gratuito · 29 de Mayo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a0a0a;
+      color: #f0ece0;
+      min-height: 100vh;
+    }
+
+    .pride-bar {
+      height: 6px;
+      background: linear-gradient(90deg, #ff0044, #ff6600, #ffcc00, #00cc66, #0066ff, #9900cc, #ff0066);
+    }
+
+    .hero {
+      background: linear-gradient(160deg, #1a0030 0%, #0a0a0a 65%);
+      padding: 48px 24px 40px;
+      text-align: center;
+      border-bottom: 1px solid #1e0e2e;
+    }
+
+    .pre-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #cc88ff;
+      border: 1px solid #6633aa;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    h1.title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 20vw, 120px);
+      letter-spacing: 3px;
+      line-height: 0.88;
+      background: linear-gradient(135deg, #ffffff 30%, #cc88ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: #666;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .pill {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 24px;
+      padding: 7px 16px;
+      font-size: 13px;
+      color: #ddd;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .pill i { color: #cc88ff; font-size: 15px; }
+
+    /* ---- Artists ---- */
+    .artists {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 24px 0;
+    }
+
+    .artist-card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 18px;
+      overflow: hidden;
+      width: 270px;
+    }
+
+    .artist-photo {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .artist-body {
+      padding: 16px 18px;
+    }
+
+    .artist-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 1px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .social-links { display: flex; flex-direction: column; gap: 4px; }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      color: #999;
+      text-decoration: none;
+      padding: 6px 8px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .social-link:hover { background: rgba(255,255,255,0.06); color: #eee; }
+    .social-link i { font-size: 17px; color: #cc88ff; width: 20px; flex-shrink: 0; }
+
+    /* ---- Form ---- */
+    .form-wrap {
+      max-width: 620px;
+      margin: 44px auto 0;
+      padding: 0 24px 60px;
+    }
+
+    .form-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 1px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .form-desc {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .field { margin-bottom: 20px; }
+
+    .field label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .field label .req { color: #cc88ff; margin-left: 2px; }
+
+    input[type=text],
+    input[type=email],
+    input[type=tel] {
+      width: 100%;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 13px 15px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: #f0ece0;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type=text]:focus,
+    input[type=email]:focus,
+    input[type=tel]:focus { border-color: #7733bb; }
+
+    .divider {
+      height: 1px;
+      background: #1a1a1a;
+      margin: 30px 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .section-label strong { color: #cc88ff; }
+
+    .check-group { display: flex; flex-direction: column; gap: 9px; }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 10px;
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .check-item:hover { border-color: #5522aa; }
+
+    .check-item input[type=checkbox] {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: #9944dd;
+      cursor: pointer;
+    }
+
+    .check-item .clabel {
+      font-size: 13px;
+      color: #bbb;
+      line-height: 1.5;
+    }
+
+    .check-item .clabel a {
+      color: #cc88ff;
+      text-decoration: none;
+    }
+
+    .check-item .clabel a:hover { text-decoration: underline; }
+    .check-item .clabel strong { color: #fff; font-weight: 500; }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 30px;
+      padding: 18px;
+      background: linear-gradient(135deg, #7722cc, #cc44aa);
+      border: none;
+      border-radius: 12px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 2px;
+      color: #fff;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    .submit-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .submit-btn:active { transform: scale(0.99); }
+
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: #444;
+      margin-top: 18px;
+      line-height: 1.7;
+    }
+
+    /* ---- Success ---- */
+    #successMsg {
+      display: none;
+      text-align: center;
+      padding: 50px 24px;
+    }
+
+    .pride-accent {
+      width: 52px;
+      height: 4px;
+      background: linear-gradient(90deg, #ff0044, #ff6600, #ffcc00, #00cc66, #0066ff, #9900cc);
+      border-radius: 2px;
+      margin: 14px auto;
+    }
+
+    #successMsg h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      color: #cc88ff;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    #successMsg p {
+      font-size: 15px;
+      color: #888;
+      line-height: 1.8;
+    }
+
+    #successMsg p strong { color: #eee; }
+
+    /* ---- Error msg ---- */
+    .error-msg {
+      display: none;
+      background: rgba(200, 40, 80, 0.12);
+      border: 1px solid rgba(200, 40, 80, 0.3);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #ff6688;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .artist-card { width: 100%; max-width: 340px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pride-bar"></div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="pre-tag">Previa al mes del orgullo 🌈</div>
+    <h1 class="title">NENTAY</h1>
+    <p class="subtitle">Concierto gratuito · Barranco · Lima</p>
+    <div class="pills">
+      <div class="pill"><i class="ti ti-calendar"></i>Jueves 29 de mayo</div>
+      <div class="pill"><i class="ti ti-clock"></i>8:00 PM</div>
+      <div class="pill"><i class="ti ti-map-pin"></i>Balconcito · Av. Lima 786, Barranco</div>
+      <div class="pill"><i class="ti ti-ticket"></i>Entrada libre</div>
+    </div>
+  </div>
+
+  <!-- ARTISTAS -->
+  <div class="artists">
+
+    <div class="artist-card">
+      <img
+        src="https://i.imgur.com/ANTAY_placeholder.jpg"
+        alt="ANTAY"
+        class="artist-photo"
+        id="photoAntay"
+        onerror="this.style.display='none'"
+      >
+      <div class="artist-body">
+        <div class="artist-name">ANTAY</div>
+        <div class="social-links">
+          <a class="social-link" href="https://www.youtube.com/channel/UC7wuFBeWQaEpHFjqh7J4arA" target="_blank" rel="noopener">
+            <i class="ti ti-brand-youtube"></i>ANTAY en YouTube
+          </a>
+          <a class="social-link" href="https://www.instagram.com/soyantay/" target="_blank" rel="noopener">
+            <i class="ti ti-brand-instagram"></i>@soyantay
+          </a>
+          <a class="social-link" href="https://www.tiktok.com/@soyantay" target="_blank" rel="noopener">
+            <i class="ti ti-brand-tiktok"></i>@soyantay
+          </a>
+          <a class="social-link" href="https://open.spotify.com/intl-es/artist/1BO5ZvMjNJ6WdnsKkvessS" target="_blank" rel="noopener">
+            <i class="ti ti-brand-spotify"></i>ANTAY en Spotify
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="artist-card">
+      <img
+        src="https://i.imgur.com/Negra_placeholder.jpg"
+        alt="Negra Valencia"
+        class="artist-photo"
+        id="photoNegra"
+        onerror="this.style.display='none'"
+      >
+      <div class="artist-body">
+        <div class="artist-name">Negra Valencia</div>
+        <div class="social-links">
+          <a class="social-link" href="https://www.youtube.com/@negravalencia2982" target="_blank" rel="noopener">
+            <i class="ti ti-brand-youtube"></i>Negra Valencia en YouTube
+          </a>
+          <a class="social-link" href="https://www.instagram.com/negravalencia/" target="_blank" rel="noopener">
+            <i class="ti ti-brand-instagram"></i>@negravalencia
+          </a>
+          <a class="social-link" href="https://www.tiktok.com/@negravalenciamusica" target="_blank" rel="noopener">
+            <i class="ti ti-brand-tiktok"></i>@negravalenciamusica
+          </a>
+          <a class="social-link" href="https://open.spotify.com/intl-es/artist/5aTwTK3CYfovIXqcEVQpMl" target="_blank" rel="noopener">
+            <i class="ti ti-brand-spotify"></i>Negra Valencia en Spotify
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FORMULARIO -->
+  <div class="form-wrap">
+    <div id="theForm">
+      <div class="form-heading">¡Anótate y ven!</div>
+      <p class="form-desc">
+        El concierto es gratuito y abierto a todes 🌈 Déjanos tus datos para avisarte del evento y que no te pierdas nada de lo que viene.
+      </p>
+
+      <!-- Datos personales -->
+      <div class="field">
+        <label>Nombre completo <span class="req">*</span></label>
+        <input type="text" id="nombre" placeholder="¿Cómo te llamamos?">
+      </div>
+
+      <div class="field">
+        <label>Correo electrónico <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="tu@correo.com">
+      </div>
+
+      <div class="field">
+        <label>Celular</label>
+        <input type="tel" id="celular" placeholder="+51 999 999 999">
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Seguir en redes -->
+      <p class="section-label">Síguenos — <strong>nos ayuda un montón para seguir haciendo esto 🙏</strong></p>
+      <div class="check-group">
+
+        <label class="check-item">
+          <input type="checkbox" name="seguimiento" value="yt_antay">
+          <span class="clabel">Ya sigo a <strong>ANTAY</strong> en <a href="https://www.youtube.com/channel/UC7wuFBeWQaEpHFjqh7J4arA" target="_blank">YouTube ↗</a></span>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" name="seguimiento" value="ig_antay">
+          <span class="clabel">Ya sigo a <strong>ANTAY</strong> en <a href="https://www.instagram.com/soyantay/" target="_blank">Instagram @soyantay ↗</a></span>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" name="seguimiento" value="tt_antay">
+          <span class="clabel">Ya sigo a <strong>ANTAY</strong> en <a href="https://www.tiktok.com/@soyantay" target="_blank">TikTok @soyantay ↗</a></span>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" name="seguimiento" value="sp_antay">
+          <span class="clabel">Ya escucho a <strong>ANTAY</strong> en <a href="https://open.spotify.com/intl-es/artist/1BO5ZvMjNJ6WdnsKkvessS" target="_blank">Spotify ↗</a></span>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" name="seguimiento" value="yt_negra">
+          <span class="clabel">Ya sigo a <strong>Negra Valencia</strong> en <a href="https://www.youtube.com/@negravalencia2982" target="_blank">YouTube ↗</a></span>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" name="seguimiento" value="ig_negra">
+          <span class="clabel">Ya sigo a <strong>Negra Valencia</strong> en <a href="https://www.instagram.com/negravalencia/" target="_blank">Instagram @negravalencia ↗</a></span>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" name="seguimiento" value="tt_negra">
+          <span class="clabel">Ya sigo a <strong>Negra Valencia</strong> en <a href="https://www.tiktok.com/@negravalenciamusica" target="_blank">TikTok @negravalenciamusica ↗</a></span>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" name="seguimiento" value="sp_negra">
+          <span class="clabel">Ya escucho a <strong>Negra Valencia</strong> en <a href="https://open.spotify.com/intl-es/artist/5aTwTK3CYfovIXqcEVQpMl" target="_blank">Spotify ↗</a></span>
+        </label>
+
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Consentimiento -->
+      <p class="section-label">Consentimiento</p>
+      <div class="check-group">
+        <label class="check-item">
+          <input type="checkbox" id="consent">
+          <span class="clabel"><strong>Sí, quiero recibir info</strong> sobre próximos conciertos y novedades de ANTAY y Negra Valencia por correo o WhatsApp 💜</span>
+        </label>
+      </div>
+
+      <div class="error-msg" id="errorMsg"></div>
+
+      <button class="submit-btn" onclick="submitForm()">¡ME APUNTO AL NENTAY! 🌈</button>
+
+      <p class="footer-note">
+        Tu información está segura y solo la usamos para avisarte de este evento y, si diste tu consentimiento, de próximas novedades.
+      </p>
+    </div>
+
+    <!-- Mensaje de éxito -->
+    <div id="successMsg">
+      <div class="pride-accent"></div>
+      <h2>¡TE ESPERAMOS! 🎉</h2>
+      <div class="pride-accent"></div>
+      <p>
+        Ya quedaste anotade para el <strong>Nentay</strong>.<br>
+        Nos vemos el <strong>29 de mayo a las 8 PM</strong> en Balconcito, Barranco.<br><br>
+        Y si aún no nos sigues en redes, ¡aprovecha los links de arriba! 💜
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // ── Reemplaza estos URLs con los links reales a tus fotos subidas ──
+    // Por ejemplo, si subes las fotos a Google Drive con acceso público
+    // o a un host de imágenes, pon aquí el enlace directo a cada una.
+    var ANTAY_PHOTO_URL   = "URL_FOTO_ANTAY_AQUI";
+    var NEGRA_PHOTO_URL   = "URL_FOTO_NEGRA_AQUI";
+
+    document.getElementById('photoAntay').src = ANTAY_PHOTO_URL;
+    document.getElementById('photoNegra').src = NEGRA_PHOTO_URL;
+
+    function submitForm() {
+      var nombre  = document.getElementById('nombre').value.trim();
+      var email   = document.getElementById('email').value.trim();
+      var celular = document.getElementById('celular').value.trim();
+      var consent = document.getElementById('consent').checked;
+      var errEl   = document.getElementById('errorMsg');
+
+      var seguidos = [];
+      document.querySelectorAll('input[name="seguimiento"]:checked').forEach(function(cb) {
+        seguidos.push(cb.value);
+      });
+
+      errEl.style.display = 'none';
+      errEl.textContent = '';
+
+      if (!nombre) {
+        errEl.textContent = '¡Cuéntanos tu nombre para anotarte!';
+        errEl.style.display = 'block';
+        return;
+      }
+      if (!email || !email.includes('@')) {
+        errEl.textContent = 'Necesitamos un correo válido para avisarte 🙏';
+        errEl.style.display = 'block';
+        return;
+      }
+
+      // ── Envío a Google Apps Script ──
+      // Reemplaza SCRIPT_URL con la URL de tu Web App publicada en Apps Script
+      var SCRIPT_URL = "URL_DE_TU_APPS_SCRIPT_AQUI";
+
+      var payload = {
+        nombre:   nombre,
+        email:    email,
+        celular:  celular,
+        consent:  consent,
+        seguidos: seguidos.join(", ")
+      };
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode:   'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function() {
+        document.getElementById('theForm').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      })
+      .catch(function(err) {
+        console.error(err);
+        // Aun así mostramos el éxito para no bloquear al usuario
+        document.getElementById('theForm').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      });
+    }
+  </script>
+
+</body>
+</html>
