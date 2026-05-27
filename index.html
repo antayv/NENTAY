@@ -536,9 +536,7 @@
         return;
       }
 
-      // ── Envío a Google Apps Script ──
-      // Reemplaza SCRIPT_URL con la URL de tu Web App publicada en Apps Script
-      var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0X33hZZUK32xcpEyLwo23m3LPV-ChJ2BH_Njz4EUAOyCvrxLTLlnzJRclQHrRP5RAqA/exec";
+      var FORMSPREE_URL = "https://formspree.io/f/mpqnonke";
 
       var payload = {
         nombre:   nombre,
@@ -548,7 +546,7 @@
         seguidos: seguidos.join(", ")
       };
 
-      fetch(SCRIPT_URL, {
+      fetch(FORMSPREE_URL, {
         method: 'POST',
         mode:   'no-cors',
         headers: { 'Content-Type': 'application/json' },
